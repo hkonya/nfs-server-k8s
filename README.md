@@ -13,23 +13,17 @@
 3. NFS sunucusuna bağlanın (Sunucunun dahili IP adresini kullanın).
 
 ### Kubernetes StorageClass ve NFS-Provisioner Oluşturma
-1. `class.yaml` dosyasını oluşturun ve aşağıdaki içeriği ekleyin:
+1. `class.yaml` dosyasını oluşturun:
    ```yaml
-   apiVersion: storage.k8s.io/v1
-   kind: StorageClass
-   metadata:
-     name: managed-nfs-storage
-   provisioner: nfs-provisioner
-   parameters:
-     archiveOnDelete: "false"
+   kubectl apply -f class.yaml
    ```
-2. `deployment.yaml` dosyasını oluşturun ve aşağıdaki içeriği ekleyin:
+2. `deployment.yaml` dosyasını oluşturun:
    ```yaml
-   [deployment.yaml içeriği]
+   kubectl apply -f deployment.yaml
    ```
-3. `rbac.yaml` dosyasını oluşturun ve aşağıdaki içeriği ekleyin:
+3. `rbac.yaml` dosyasını oluşturun:
    ```yaml
-   [rbac.yaml içeriği]
+   kubectl apply -f rbac.yaml
    ```
 
 ### EN
@@ -47,21 +41,15 @@
 3. Connect to the NFS server (Use the internal IP address of the server).
 
 ### Kubernetes StorageClass and NFS-Provisioner Setup
-1. Create a `class.yaml` file and add the following content:
+1. Apply `class.yaml`:
    ```yaml
-   apiVersion: storage.k8s.io/v1
-   kind: StorageClass
-   metadata:
-     name: managed-nfs-storage
-   provisioner: nfs-provisioner
-   parameters:
-     archiveOnDelete: "false"
+   kubectl apply -f class.yaml
    ```
-2. Create a `deployment.yaml` file and add the following content:
+2. Apply `deployment.yaml`:
    ```yaml
-   [deployment.yaml content]
+   kubectl apply -f deployment.yaml
    ```
-3. Create a `rbac.yaml` file and add the following content:
+3. Apply `rbac.yaml`:
    ```yaml
-   [rbac.yaml content]
+   kubectl apply -f rbac.yaml
    ```
