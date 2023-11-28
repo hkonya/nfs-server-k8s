@@ -1,4 +1,5 @@
 ### TR
+Kurulum adımları için nfs-server-client-install.txt dosyasını inceleyebilirsiniz.
 ### NFS Sunucusu Kurulumu
 1. Güncellemeleri kontrol edin ve yükleyin: `sudo apt update`
 2. NFS kernel sunucusunu yükleyin: `sudo apt install nfs-kernel-server`
@@ -13,20 +14,27 @@
 3. NFS sunucusuna bağlanın (Sunucunun dahili IP adresini kullanın).
 
 ### Kubernetes StorageClass ve NFS-Provisioner Oluşturma
-1. `class.yaml` dosyasını oluşturun:
+1. `class.yaml` dosyasını oluşturun ve aşağıdaki içeriği ekleyin:
    ```yaml
-   kubectl apply -f class.yaml
+   apiVersion: storage.k8s.io/v1
+   kind: StorageClass
+   metadata:
+     name: managed-nfs-storage
+   provisioner: nfs-provisioner
+   parameters:
+     archiveOnDelete: "false"
    ```
-2. `deployment.yaml` dosyasını oluşturun:
+2. `deployment.yaml` dosyasını oluşturun ve aşağıdaki içeriği ekleyin:
    ```yaml
-   kubectl apply -f deployment.yaml
+   [deployment.yaml içeriği]
    ```
-3. `rbac.yaml` dosyasını oluşturun:
+3. `rbac.yaml` dosyasını oluşturun ve aşağıdaki içeriği ekleyin:
    ```yaml
-   kubectl apply -f rbac.yaml
+   [rbac.yaml içeriği]
    ```
 
 ### EN
+You can review the nfs-server-client-install.txt file for installation steps.
 ### NFS Server Setup
 1. Check for and install updates: `sudo apt update`
 2. Install the NFS kernel server: `sudo apt install nfs-kernel-server`
@@ -41,15 +49,21 @@
 3. Connect to the NFS server (Use the internal IP address of the server).
 
 ### Kubernetes StorageClass and NFS-Provisioner Setup
-1. Apply `class.yaml`:
+1. Create a `class.yaml` file and add the following content:
    ```yaml
-   kubectl apply -f class.yaml
+   apiVersion: storage.k8s.io/v1
+   kind: StorageClass
+   metadata:
+     name: managed-nfs-storage
+   provisioner: nfs-provisioner
+   parameters:
+     archiveOnDelete: "false"
    ```
-2. Apply `deployment.yaml`:
+2. Create a `deployment.yaml` file and add the following content:
    ```yaml
-   kubectl apply -f deployment.yaml
+   [deployment.yaml content]
    ```
-3. Apply `rbac.yaml`:
+3. Create a `rbac.yaml` file and add the following content:
    ```yaml
-   kubectl apply -f rbac.yaml
+   [rbac.yaml content]
    ```
